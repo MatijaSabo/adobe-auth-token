@@ -34,5 +34,5 @@ jobs:
         env:
           FIREFLY_SERVICES_CLIENT_ID: ${{ secrets.FIREFLY_SERVICES_CLIENT_ID }}
           FIREFLY_SERVICES_CLIENT_SECRET: ${{ secrets.FIREFLY_SERVICES_CLIENT_SECRET }}
-          FIREFLY_SERVICES_SCOPES: ${{ env.FIREFLY_SERVICES_SCOPES }}
+          FIREFLY_SERVICES_SCOPES: ${{ vars.FIREFLY_SERVICES_SCOPES }}
         run: npx serverless deploy --stage prod
