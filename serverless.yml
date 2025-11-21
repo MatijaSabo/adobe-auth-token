@@ -11,15 +11,6 @@ provider:
     FIREFLY_SERVICES_CLIENT_ID: ${env:FIREFLY_SERVICES_CLIENT_ID}
     FIREFLY_SERVICES_CLIENT_SECRET: ${env:FIREFLY_SERVICES_CLIENT_SECRET}
     FIREFLY_SERVICES_SCOPES: ${env:FIREFLY_SERVICES_SCOPES}
-    API_AUTH_TOKEN: ${env:API_AUTH_TOKEN}
-  
-  httpApi:
-    authorizers:
-      tokenAuth:
-        type: request
-        functionName: apiAuth
-        identitySource:
-          - $request.header.Authorization
 
 functions:
   getBarrierToken:
@@ -28,9 +19,4 @@ functions:
     events:
       - httpApi:
           path: /adobe/auth
-          method: get
-          authorizer: tokenAuth # <-- MUST match provider.httpApi.authorizers key
-          
-  apiAuth:
-    handler: auth.handler
-    timeout: 5          
+          method: get     
