@@ -20,6 +20,3 @@ functions:
       - httpApi:
           path: /adobe/auth
           method: get
-
-plugins:
-  - serverless-offline
