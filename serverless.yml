@@ -1,6 +1,6 @@
 service: adobe-auth-service
 
-frameworkVersion: "^4.23.0"
+frameworkVersion: "^3.40.0"
 
 provider:
   name: aws
