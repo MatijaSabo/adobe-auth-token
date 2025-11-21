@@ -11,6 +11,7 @@ provider:
     FIREFLY_SERVICES_CLIENT_ID: ${env:FIREFLY_SERVICES_CLIENT_ID}
     FIREFLY_SERVICES_CLIENT_SECRET: ${env:FIREFLY_SERVICES_CLIENT_SECRET}
     FIREFLY_SERVICES_SCOPES: ${env:FIREFLY_SERVICES_SCOPES}
+    API_AUTH_TOKEN: ${env:API_AUTH_TOKEN}
 
 functions:
   getBarrierToken:
@@ -20,3 +21,9 @@ functions:
       - httpApi:
           path: /adobe/auth
           method: get
+          authorizer:
+            name: apiAuth
+            type: request   # request-based Lambda authorizer
+  apiAuth:
+    handler: auth.handler
+    timeout: 5          
