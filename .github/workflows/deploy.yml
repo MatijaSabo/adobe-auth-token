@@ -35,4 +35,5 @@ jobs:
           FIREFLY_SERVICES_CLIENT_ID: ${{ secrets.FIREFLY_SERVICES_CLIENT_ID }}
           FIREFLY_SERVICES_CLIENT_SECRET: ${{ secrets.FIREFLY_SERVICES_CLIENT_SECRET }}
           FIREFLY_SERVICES_SCOPES: ${{ vars.FIREFLY_SERVICES_SCOPES }}
+          API_AUTH_TOKEN: ${{ secrets.API_AUTH_TOKEN }}
         run: npx serverless deploy --stage prod
