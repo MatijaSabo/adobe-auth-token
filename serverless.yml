@@ -1,0 +1,25 @@
+service: adobe-auth-service
+
+frameworkVersion: "^3.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  stage: prod
+  environment:
+    FIREFLY_SERVICES_CLIENT_ID: ${env:FIREFLY_SERVICES_CLIENT_ID}
+    FIREFLY_SERVICES_CLIENT_SECRET: ${env:FIREFLY_SERVICES_CLIENT_SECRET}
+    FIREFLY_SERVICES_SCOPES: ${env:FIREFLY_SERVICES_SCOPES}
+
+functions:
+  getBarrierToken:
+    handler: index.handler
+    timeout: 15
+    events:
+      - httpApi:
+          path: /adobe/auth
+          method: get
+
+plugins:
+  - serverless-offline
